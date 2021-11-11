@@ -14,7 +14,6 @@ sklearn
 pygsp
 seaborn
 jupyter
-louvain
 torch
 torch-scatter
 torch-sparse
