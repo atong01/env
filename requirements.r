@@ -4,7 +4,7 @@ install.packages(c("IRkernel", "tidyverse", "anndata", "lmds", "FNN"), repos = "
 Sys.setenv(DOWNLOAD_STATIC_LIBV8=1)
 install.packages(c("V8","sfsmisc","clue","randomForest","lattice","devtools","MASS"),repos="https://cran.rstudio.com")
 if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager",repos="https://cran.us.r-project.org")
+    install.packages("BiocManager",repos="https://cran.rstudio.com")
 BiocManager::install(version = "3.14")
 BiocManager::install(c("SID", "bnlearn", "pcalg"))
 #BiocManager::install(c("CAM", "SID", "bnlearn", "pcalg", "kpcalg", "D2C"))
