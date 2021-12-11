@@ -15,9 +15,10 @@ pygsp
 seaborn
 jupyter
 torch
-torch-scatter
-torch-sparse
-torch-cluster
-torch-spline-conv
-torch-geometric
 networkx
+cdt
+#torch-scatter
+#torch-sparse
+#torch-cluster
+#torch-spline-conv
+#torch-geometric
