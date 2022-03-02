@@ -1,0 +1,39 @@
+FROM jupyter/datascience-notebook:ubuntu-20.04
+MAINTAINER Alexander Tong <alexandertongdev@gmail.com>
+LABEL version="0.1.0"
+LABEL description="CellChatDB"
+
+USER ${NB_UID}
+
+RUN mamba install --quiet --yes \
+    'r-systemfonts' \
+    'r-svglite' \
+    'r-biocmanager'  && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN R -e 'BiocManager::install("Biobase")'
+RUN R -e 'install.packages("NMF", repos="http://cran.rstudio.com")'
+RUN R -e 'devtools::install_github("jokergoo/circlize")'
+RUN R -e 'devtools::install_github("jokergoo/ComplexHeatmap")'
+RUN R -e 'devtools::install_github("sqjin/CellChat")'
+
+RUN pip install --quiet --no-cache-dir \
+    'gtfparse' \
+    'leidenalg' \
+    'openpyxl' \
+    'pybiomart' \
+    'scanpy' && \
+#    'DiffusionEMD' \
+#    'meld' \
+#    'phate' \
+#    'pot' \
+#    'pygsp' \
+#    'scprep' && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+RUN pip install --quiet --no-cache-dir umap-learn && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
